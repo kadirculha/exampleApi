@@ -17,43 +17,6 @@ app1.add_middleware(
 )
 
 
-@app1.get("/get_departments/")
-def get_departments():
-    # "basketball", "football", "volleyball"
-    return {
-        "result": ["Ürün Hizmetleri",
-                   "Bilet Hizmetleri",
-                   "İşbirliği ve Anlaşma"]
-    }
-
-
-@app1.get("/get_product_types/")
-def get_product_types():
-    # "çubuklu", "kolsuz", "hoodie"
-    return {"result": ["Forma", "Ayakkabı"]}
-
-
-@app1.get("/get_uniform_type/")
-def get_product_by_color():
-    # "yellow", "red", "green", "blue"
-    return {"result": ["Çubuklu", "Düz", "Parçalı"]}
-
-
-@app1.get("/get_size/")
-def get_product_by_size():
-    # "x", "xxl", "s"
-    return {"result": ["XS", "XL", "XXL"]}
-
-
-@app1.get("/get_market/")
-def get_market():
-    return {"result": ["www.example.com da ürününüz bulunmaktadır"]}
-
-
-@app1.get("/get_food/")
-def get_food():
-    return {"result": ["Yemeğiniz ... restauranttadır ve yola çıkmıştır"]}
-
 
 @app1.get("/get_book")
 def get_book(param):
