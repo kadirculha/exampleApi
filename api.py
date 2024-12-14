@@ -65,4 +65,4 @@ def get_false():
 
 
 if __name__ == "__main__":
-    uvicorn.run(app1, host="0.0.0.0", port=8008)
+    uvicorn.run(app1, host="0.0.0.0", port=8010)
