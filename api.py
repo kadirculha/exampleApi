@@ -139,19 +139,19 @@ class ShipmentRequest(BaseModel):
     sender_address: str
     sender_city: str
     sender_district: str
-    sender_postal_code: str
+    sender_postal_code: float
     receiver_name: str
     receiver_phone: str
     receiver_email: str
     receiver_address: str
     receiver_city: str
     receiver_district: str
-    receiver_postal_code: str
+    receiver_postal_code: float
     package_description: str
     package_weight: float
-    package_length: int
-    package_width: int
-    package_height: int
+    package_length: float
+    package_width: float
+    package_height: float
     package_value: float
     service_type: str  # standard, express, cargo
     payment_method: str  # sender_pay, receiver_pay
@@ -164,6 +164,9 @@ async def create_shipment(shipment: ShipmentRequest):
         "status": "success",
         "message": f"Kargo oluşturuldu: {shipment.dict()}"
     }
+    
+    
+
 
 class NearestBranchRequest(BaseModel):
     cityName: str
