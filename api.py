@@ -128,7 +128,72 @@ async def cargo_akisi(input: CargoRequest):
         "status": "success",
         "message": f"cargo başarıyla oluşturuldu: {input.dict()}"
     }
-    
+
+
+# mng kargo için api senaryoları
+
+class ShipmentRequest(BaseModel):
+    sender_name: str
+    sender_phone: str
+    sender_email: str
+    sender_address: str
+    sender_city: str
+    sender_district: str
+    sender_postal_code: str
+    receiver_name: str
+    receiver_phone: str
+    receiver_email: str
+    receiver_address: str
+    receiver_city: str
+    receiver_district: str
+    receiver_postal_code: str
+    package_description: str
+    package_weight: float
+    package_length: int
+    package_width: int
+    package_height: int
+    package_value: float
+    service_type: str  # standard, express, cargo
+    payment_method: str  # sender_pay, receiver_pay
+    insurance: Optional[bool] = False
+    sms_notification: Optional[bool] = True
+
+@app.post("/mng_cargo/create_shipment")
+async def create_shipment(shipment: ShipmentRequest):
+    return {
+        "status": "success",
+        "message": f"Kargo oluşturuldu: {shipment.dict()}"
+    }
+
+class NearestBranchRequest(BaseModel):
+    cityName: str
+    districtName: str
+    neighborhoodName: str
+
+@app.post("/mng_cargo/find_nearest_branch")
+async def find_nearest_branch(request: NearestBranchRequest):
+    return {
+        "status": "success",
+        "message": f"En yakın kargo şubesi: {request.dict()}"
+    }
+
+
+class CargoTrackingRequest(BaseModel):
+    tracking_number: str
+    name: str
+    phone: str
+
+@app.post("/mng_cargo/tracking")
+async def tracking(request: CargoTrackingRequest):
+    return {
+        "status": "success",
+        "message": f"Kargo takip numarası: {request.dict()}"
+    }
+
+
+
+
+
 
 # Run application
 if __name__ == "__main__":
