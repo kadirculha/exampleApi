@@ -182,20 +182,18 @@ async def find_nearest_branch(request: NearestBranchRequest):
 
 
 class CargoTrackingRequest(BaseModel):
-    tracking_number: str
+    tracking_number: Optional[str] = None
     name: str
+    surname: str
     phone: str
+    corgo_branch_address: str
 
 @app.post("/mng_cargo/tracking")
 async def tracking(request: CargoTrackingRequest):
     return {
         "status": "success",
-        "message": f"Kargo takip numarası: {request.dict()}"
+        "message": f"Kargonuz Şuanda istanbul'da bulunmaktadır"
     }
-
-
-
-
 
 
 # Run application
